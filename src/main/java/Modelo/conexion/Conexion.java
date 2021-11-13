@@ -7,7 +7,7 @@ package Modelo.conexion;
 
 /**
  *
- * @author USER
+ * @author Camilo Ternera
  */
 public class Conexion {
     
