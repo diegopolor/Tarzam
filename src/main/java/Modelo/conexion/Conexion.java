@@ -10,5 +10,5 @@ package Modelo.conexion;
  * @author Camilo Ternera
  */
 public class Conexion {
-    
-}
+  
+}  
