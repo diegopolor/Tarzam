@@ -24,12 +24,13 @@ public class Conexion {
     
     public static Connection getConnection(){       
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, pass);
-            JOptionPane.showMessageDialog(null, "✔ Success: Conectado a la base de datos.");
+          
         }               
         catch (ClassNotFoundException | SQLException e) {          
-            JOptionPane.showMessageDialog(null, "✖ Error: Ha fallado la conexión.\n" + e);  
+          System.out.println("Error: Ha fallado la conexión.\n");  
+         
         }   
         return conn; 
      } 
@@ -42,6 +43,7 @@ public class Conexion {
     public static void close (PreparedStatement psmtm ) throws SQLException{  
         psmtm.close();
     }
+    
 
     public static void close (Statement smtm) throws SQLException{  
         smtm.close();
@@ -57,7 +59,5 @@ public class Conexion {
     }
 }
 
-    // public static void main(String[] args) {
-    //     Conexion.getConnection();
-    // }
+  
 

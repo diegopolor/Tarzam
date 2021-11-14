@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.tarzam.s.a.s;
 
 import Modelo.Objects.LoginDao;
-import Modelo.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,7 +29,8 @@ public class Login extends HttpServlet {
                 
                 //instancia la clase Login para la consulta
                 LoginDao login =  new LoginDao();
-        
+         
+                
                 if(login.checkLogin(usuario, clave)){
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
@@ -42,7 +38,10 @@ public class Login extends HttpServlet {
                     //si es false devuelve al front un atributo resultado 
                     request.setAttribute("resultados", "Usuario o contraseña incorrecta");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
-                }               
+                }    
+               
+                       
+                    
            } 
         }
     }
