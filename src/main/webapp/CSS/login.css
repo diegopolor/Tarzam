@@ -1,0 +1,96 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8/11/2021, 04:23:03 PM
+    Author     : User
+*/
+
+*{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+:root{
+    --ColorNum1-- : #313131;
+    --ColorNum2-- : #000000;
+    --ColorNum3-- : #ffffff;
+    --ColorNum4--:  #cf0303;
+    --ColorNum5--:  #686868;
+
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--ColorNum1--);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-container{
+    width: 450px;
+    height: 580px;
+
+}
+.form{
+    width: 100%;
+    height: 100%;
+    background: var(--ColorNum2--);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form h2{
+    margin-bottom: 60px;
+    font-size: 35px;
+    
+}
+.formtxt{
+    color: var(--ColorNum3--);
+}
+.forminput{
+    width: 75%;
+    height: 30px;
+    padding-left: 2px;
+    background: var(--ColorNum2--);
+    color: var(--ColorNum5--);
+    border: none;
+    border-bottom: #cf0303 solid 2px;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+.formlabel{
+    width: 75%;
+    height: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.formbtn{
+    width: 75%;
+    height: 40px;
+    background: var(--ColorNum4--);
+    border-radius: 15px;
+    border: none;
+    color: var(--ColorNum3--);
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 40px;
+    cursor: pointer;
+}
+.logocontainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formimg{
+    width: 100px;
+    height: 100px;
+    border-radius: 200px;
+    position: fixed;
+}
