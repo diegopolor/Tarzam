@@ -2,15 +2,15 @@ package Modelo.Objects;
 
 
 public class Pelicula {
-   private int id_pelicula; 
-   private String titulo;
-   private String tipo;
-   private String categoria;
-   private String actorPrincipal;
-   private int precio;
-   private int stock;
-   private int saldo;
-   
+    private int id_pelicula; 
+    private String titulo;
+    private String tipo;
+    private String categoria;
+    private String actorPrincipal;
+    private int precio;
+    private int stock;
+    private int saldo;
+
     public Pelicula(int id_pelicula, String titulo, String tipo, String categoria, String actorPrincipal, int precio, int stock, int saldo) {
         this.id_pelicula = id_pelicula;
         this.titulo = titulo;

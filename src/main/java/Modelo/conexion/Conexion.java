@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.conexion;
 
 import java.sql.Connection;
@@ -19,10 +14,10 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
     
-  private static final String url = "jdbc:mysql://localhost:3306/tarzam";
-  private static final String user = "root";
-  private static final String pass = "";
-  static Connection conn; 
+    private static final String url = "jdbc:mysql://localhost:3306/tarzam";
+    private static final String user = "root";
+    private static final String pass = "";
+    static Connection conn; 
     
     public static Connection getConnection(){       
         try {
@@ -31,10 +26,10 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, "✔ Success: Conectado a la base de datos.");
         }               
         catch (ClassNotFoundException | SQLException e) {          
-          JOptionPane.showMessageDialog(null, "✖ Error: Ha fallado la conexión.\n" + e);  
+            JOptionPane.showMessageDialog(null, "✖ Error: Ha fallado la conexión.\n" + e);  
         }   
         return conn; 
-     } 
+    } 
     
     public static void close (ResultSet r) throws SQLException{  
         r.close();
@@ -44,7 +39,7 @@ public class Conexion {
         psmtm.close();
     }
     
-   public static void close (Statement smtm) throws SQLException{  
+    public static void close (Statement smtm) throws SQLException{  
         smtm.close();
     }
     

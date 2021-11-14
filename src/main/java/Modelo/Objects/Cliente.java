@@ -2,13 +2,13 @@
 package Modelo.Objects;
 
 public class Cliente {
-  private int id_cliente; 
-  private String nombre;
-  private String apellidos;
-  private int documento;
-  private String direccion;
-  private String telefono;
-  private String celular;
+    private int id_cliente; 
+    private String nombre;
+    private String apellidos;
+    private int documento;
+    private String direccion;
+    private String telefono;
+    private String celular;
 
     public Cliente(int id_cliente, String nombre, String apellidos, int documento, String direccion, String telefono, String celular) {
         this.id_cliente = id_cliente;
@@ -80,7 +80,4 @@ public class Cliente {
         this.celular = celular;
     }
     
-    
-  
-  
 }
