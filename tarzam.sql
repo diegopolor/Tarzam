@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2021 a las 23:05:23
+-- Tiempo de generación: 14-11-2021 a las 01:26:19
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -21,24 +21,7 @@ SET time_zone = "+00:00";
 -- Base de datos: `tarzam`
 --
 
-CREATE DATABASE tarzam;
-USE tarzam;
-
 -- --------------------------------------------------------
-
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-
-CREATE TABLE `usuario` (
-  `id_usuario` int(5) NOT NULL COMMENT 'Id de usuario',
-  `username` varchar(50) NOT NULL COMMENT 'Nombre de usuario',
-  `password` varchar(100) NOT NULL COMMENT 'Contraseña'
-  
-  );
-
 
 --
 -- Estructura de tabla para la tabla `boleta`
@@ -101,15 +84,28 @@ CREATE TABLE `pelicula` (
   `saldo_pelicula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(5) NOT NULL COMMENT 'Id de usuario',
+  `username` varchar(50) NOT NULL COMMENT 'Nombre de usuario',
+  `password` varchar(100) NOT NULL COMMENT 'Contraseña'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
+(1, 'admin', '123');
+
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Indices de la tabla `boleta`
@@ -138,6 +134,12 @@ ALTER TABLE `pelicula`
   ADD PRIMARY KEY (`codigo_pelicula`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -164,6 +166,12 @@ ALTER TABLE `detalle_boleta`
 --
 ALTER TABLE `pelicula`
   MODIFY `codigo_pelicula` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria';
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Id de usuario', AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
