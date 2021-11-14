@@ -5,6 +5,8 @@
  */
 package com.mycompany.tarzam.s.a.s;
 
+import Modelo.Objects.LoginDao;
+import Modelo.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,16 +33,35 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            /* Peticion GET */
+            if(request.getMethod().equals("GET")){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }  
+            /* Petición POST */
+            else if(request.getMethod().equals("POST")){
+                
+                //toma los datos enviados en la petición
+                String usuario = request.getParameter("usuario");
+                String clave = request.getParameter("clave");
+                
+                //instancia la clase Login para la consulta
+                LoginDao login =  new LoginDao();
+                System.out.println("asdsdas");
+                Conexion.getConnection();
+                /*/se le pasa el usario y la clave para verificar que existe, devulve un booleano
+                if(login.checkLogin(usuario, clave)){
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+                else {
+                    //si es false devuelve al front un atributo resultado 
+                    request.setAttribute("resultados", "Usuario o contraseña incorrecta");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                } 
+               */ 
+                
+                
+           } 
         }
     }
 
