@@ -14,21 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author USER
- */
-public class Login extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -47,9 +34,7 @@ public class Login extends HttpServlet {
                 
                 //instancia la clase Login para la consulta
                 LoginDao login =  new LoginDao();
-                System.out.println("asdsdas");
-                Conexion.getConnection();
-                /*/se le pasa el usario y la clave para verificar que existe, devulve un booleano
+        
                 if(login.checkLogin(usuario, clave)){
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
@@ -57,10 +42,7 @@ public class Login extends HttpServlet {
                     //si es false devuelve al front un atributo resultado 
                     request.setAttribute("resultados", "Usuario o contraseña incorrecta");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
-                } 
-               */ 
-                
-                
+                }               
            } 
         }
     }
