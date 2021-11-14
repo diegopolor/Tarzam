@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  * @author Camilo Ternera
  */
 public class Conexion {
+<<<<<<< HEAD
     private static final String url = "jdbc:mysql://localhost:3306/tarzam";
     private static final  String user = "root";
     private static final String pass = "";
@@ -55,3 +56,7 @@ public class Conexion {
         Conexion.getConnection();
     }
 }
+=======
+  
+}  
+>>>>>>> 00aef4fa6b6a352c5e399df186f604a307f3f98a
