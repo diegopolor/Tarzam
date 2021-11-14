@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author polod
+ * @author Camilo Ternera, Anderson Rueda & Diego Polo
  */
 public class Conexion {
     
   private static final String url = "jdbc:mysql://localhost:3306/tarzam";
-  private static final  String user = "root";
+  private static final String user = "root";
   private static final String pass = "";
   static Connection conn; 
     
