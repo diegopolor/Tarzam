@@ -4,11 +4,13 @@
     Author     : User
 --%>
 
+<%@page import="Modelo.Objects.Pelicula"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tarzam</title>
+        <title>Tarzam - Peliculas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="CSS/crud.css" rel="stylesheet" type="text/css"/>
@@ -37,35 +39,46 @@
             </header>
             <div class="content">
                 <div class="TableContainer">
+                    <h1>Listado de Peliculas</h1>
+                    <a href="formPelicula.jsp">+Agregar</a>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>title</th>
-                                <th>type</th>
-                                <th>category</th>
-                                <th>cast</th>
-                                <th>price</th>
-                                <th>stock</th>
-                                <th>balance</th>
+                                <th>ID</th>
+                                <th>Titulo</th>
+                                <th>Tipo</th>
+                                <th>Categoria</th>
+                                <th>Cast</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Saldo</th>
                                 <th>options</th>
                             </tr>
                         </thead>
                         <tbody>
+                               <%                      
+                                List<Pelicula>peliculas = (List<Pelicula>)request.getAttribute("peliculas");
+                                
+                                System.out.println("-------Dats----------");
+                                System.out.println(peliculas);
+                                
+                                for(Pelicula peli : peliculas){                         
+                                %>
                             <tr>
-                                <td>1</td>
-                                <td>Venom</td>
-                                <td>Action</td>
-                                <td>Superheroe</td>
-                                <td>Tom hardy</td>
-                                <td>0.00</td>
-                                <td>50</td>
-                                <td>0</td>
+                                <td><%=peli.getId_pelicula() %></td>
+                                <td><%=peli.getTitulo() %></td>
+                                <td><%=peli.getTipo()%></td>
+                                <td><%=peli.getCategoria() %></td>
+                                <td><%=peli.getActorPrincipal()%></td>
+                                <td><%=peli.getPrecio()%></td>
+                                <td><%=peli.getStock()%></td>
+                                <td><%=peli.getSaldo()%></td>
                                 <td class="tablebtn">
                                     <button class="btn1">Edit</button>
                                     <button class="btn2">Delete</button>
                                 </td>
                             </tr>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>

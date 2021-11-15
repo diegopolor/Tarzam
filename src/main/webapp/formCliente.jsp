@@ -36,26 +36,20 @@
                         <div class="logoutcontainer">
                             <button class="exitbtn">X</button>
                         </div>
-                        <form action="" method = "POST" class="form">
+                        <form action="Clientes" method = "POST" class="form">
                             <div class="form-subcontainer">
-                                <label for="" class="formtxt formlabel">name</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">lastname</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">surname</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">fullname</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">surname</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">DNI</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">address</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">phone</label>
-                                <input type="text" name="" class="forminput">
-                                <label for="" class="formtxt formlabel">cellphone</label>
-                                <input type="text" name="" class="forminput">
+                                <label for="" class="formtxt formlabel">Nombre</label>
+                                <input type="text" name="nombre" class="forminput">
+                                <label for="" class="formtxt formlabel">Apellidos</label>
+                                <input type="text" name="apellidos" class="forminput">
+                                <label for="" class="formtxt formlabel">Documento</label>
+                                <input type="number" name="documento" class="forminput">
+                                <label for="" class="formtxt formlabel">Dirección</label>
+                                <input type="text" name="direccion" class="forminput">
+                                <label for="" class="formtxt formlabel">Telefono</label>
+                                <input type="text" name="telefono" class="forminput">
+                                <label for="" class="formtxt formlabel">Celular</label>
+                                <input type="text" name="celular" class="forminput">
                                 <button type="submit" class="formbtn">Agregar</button>
                             </div>
                           

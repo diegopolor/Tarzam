@@ -23,11 +23,16 @@ public class Cliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             if(request.getMethod().equals("GET")){
+                //crea la instancia de clientesDAO
                 ClienteDAO clientesDao = new ClienteDAO();
+                //hace la petición a la base de datos y devuelve los datos
                 List<Modelo.Objects.Cliente> clientes = clientesDao.selectCliente(); 
-                System.out.println("servlet datos: " + clientes);
+                //pasa los datos de la consulta al front end
                 request.setAttribute("clientes", clientes);
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
+            }
+            else if(request.getMethod().equals("POST")){
+                out.println(request.getParameter("nombre"));
             }
         }
     }

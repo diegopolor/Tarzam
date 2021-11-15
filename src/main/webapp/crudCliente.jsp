@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tarzam</title>
+        <title>Tarzam - Clientes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="CSS/crud.css" rel="stylesheet" type="text/css"/>
@@ -40,6 +40,7 @@
             <div class="content">
                 <div class="TableContainer">
                     <h1>Listado de Clientes</h1>
+                    <a href="formCliente.jsp">+Agregar</a>
                     <table class="table">
                         <thead>
                             <tr>

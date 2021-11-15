@@ -5,9 +5,12 @@
  */
 package com.mycompany.tarzam.s.a.s;
 
+import Modelo.Objects.ClienteDAO;
+import Modelo.Objects.PeliculaDAO;
 import com.mycompany.tarzam.s.a.s.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +36,12 @@ public class Pelicula extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             if(request.getMethod().equals("GET")){
-                
-                Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
+                PeliculaDAO peliculaDao = new PeliculaDAO();
+                List<Modelo.Objects.Pelicula> peliculas; 
+                peliculas = peliculaDao.selectPelicula();
+                System.out.println("servlet datos: " + peliculas);
+                request.setAttribute("peliculas", peliculas);
+                Utils.loggedRedirect(request, response, "crudPelicula.jsp","/Tarzam/Login"); 
             }
         }
     }
