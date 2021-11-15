@@ -7,12 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author Camilo Ternera, Anderson Rueda & Diego Polo
- */
 public class Conexion {
 
     private static final String url = "jdbc:mysql://localhost:3306/tarzam";
@@ -26,7 +21,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, pass);
-          
+            System.out.println("Succes: Conexión exitosa.\n");         
         }               
         catch (ClassNotFoundException | SQLException e) {          
           System.out.println("Error: Ha fallado la conexión.\n");  

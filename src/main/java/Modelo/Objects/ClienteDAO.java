@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ClienteDAO {
     
-    private static final String SQL_SELECT = "SELECT * FROM cliente";
+    private static final String SQL_SELECT = "SELECT * FROM cliente;";
 
     public List<Cliente> selectCliente() {
         /* -------------------------------------------------------------------------- */
@@ -25,19 +25,18 @@ public class ClienteDAO {
             conn = Conexion.getConnection();
             ps = conn.prepareStatement(SQL_SELECT);
             rs = ps.executeQuery();
-
+            
             while (rs.next()) {
+ 
                 int codigoCliente = rs.getInt("codigo_cliente");
                 String nombreCliente = rs.getString("nombre_cliente");
-                String apellidoCliente = rs.getString("apellido_cliente");
-                String segundoApellidoCliente = rs.getString("segundoapellido_cliente");
-                String nombreCompletoCliente = rs.getString("nombrecompleto_cliente");
+                String apellidoCliente = rs.getString("apellidos_cliente");
                 int numeroDocumentoCliente = rs.getInt("numdocumento_cliente");
                 String direccionCliente = rs.getString("direccion_cliente");
                 String telefonoCliente = rs.getString("telefono_cliente");
                 String celularCliente = rs.getString("celular_cliente");
-
-                cliente = new Cliente(codigoCliente, nombreCliente, apellidoCliente, segundoApellidoCliente, nombreCompletoCliente, numeroDocumentoCliente, direccionCliente, telefonoCliente, celularCliente);
+                
+                cliente = new Cliente(codigoCliente, nombreCliente, apellidoCliente, numeroDocumentoCliente, direccionCliente, telefonoCliente, celularCliente);
 
                 clientes.add(cliente);
             }
@@ -53,5 +52,11 @@ public class ClienteDAO {
             }
         }
         return clientes;
+    }
+    
+    public static void main(String[] args) {
+        ClienteDAO clie = new ClienteDAO();
+        System.out.println(clie.selectCliente());
+        
     }
 }

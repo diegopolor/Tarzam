@@ -5,34 +5,28 @@
  */
 package com.mycompany.tarzam.s.a.s;
 
+import Modelo.Objects.ClienteDAO;
 import com.mycompany.tarzam.s.a.s.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author USER
- */
 public class Cliente extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             if(request.getMethod().equals("GET")){
+                ClienteDAO clientesDao = new ClienteDAO();
+                List<Modelo.Objects.Cliente> clientes = clientesDao.selectCliente(); 
+                System.out.println("servlet datos: " + clientes);
+                request.setAttribute("clientes", clientes);
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
             }
         }

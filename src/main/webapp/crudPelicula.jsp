@@ -26,8 +26,12 @@
                    <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
                    <ul>
                        <li>
-                     
+                           <a href ="/Tarzam/Peliculas">Peliculas</a>
+                           <a href ="/Tarzam/Clientes">Clientes</a>
                        </li>
+                       <form method="POST" action="Logout">
+                           <input name="logut" type ="submit" value ="Salir" >                     
+                       </form>
                    </ul>
                </nav>
             </header>

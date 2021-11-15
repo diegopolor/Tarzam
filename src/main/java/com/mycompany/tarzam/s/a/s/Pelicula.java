@@ -33,6 +33,7 @@ public class Pelicula extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             if(request.getMethod().equals("GET")){
+                
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
             }
         }
