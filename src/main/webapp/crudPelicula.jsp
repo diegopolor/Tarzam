@@ -23,7 +23,7 @@
         <main class="container">
            <header>
                <nav class="navbar">
-                   <a href="#"><img src="assets/logo2.png" alt="" class="navlogo"></a>
+                   <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
                    <ul>
                        <li>
                      

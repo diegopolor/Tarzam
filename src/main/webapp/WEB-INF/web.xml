@@ -4,9 +4,41 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>com.mycompany.tarzam.s.a.s.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Pelicula</servlet-name>
+        <servlet-class>com.mycompany.tarzam.s.a.s.Pelicula</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Dashboard</servlet-name>
+        <servlet-class>com.mycompany.tarzam.s.a.s.Dashboard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>com.mycompany.tarzam.s.a.s.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Cliente</servlet-name>
+        <servlet-class>com.mycompany.tarzam.s.a.s.Cliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pelicula</servlet-name>
+        <url-pattern>/Peliculas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Dashboard</servlet-name>
+        <url-pattern>/Dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cliente</servlet-name>
+        <url-pattern>/Clientes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

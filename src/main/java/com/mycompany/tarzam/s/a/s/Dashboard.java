@@ -1,52 +1,42 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.tarzam.s.a.s;
 
-import Modelo.Objects.LoginDao;
 import com.mycompany.tarzam.s.a.s.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author USER
+ */
+public class Dashboard extends HttpServlet {
 
-
-public class Login extends HttpServlet {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            /* Peticion GET */
             if(request.getMethod().equals("GET")){   
                 //redirecciona si el usuario esta loggueado o no
-                Utils.noLoggedRedirect(request, response, "/Tarzam/Dashboard","login.jsp");              
+                Utils.loggedRedirect(request, response, "Dashboard.jsp","/Tarzam/Login");              
             }  
-            /* Petición POST */
-            else if(request.getMethod().equals("POST")){
-                
-                //toma los datos enviados en la petición
-                String usuario = request.getParameter("usuario");
-                String clave = request.getParameter("clave");
-                
-                //instancia la clase Login para la consulta
-                LoginDao login =  new LoginDao();
-         
-                //se le pasa el usuario y la clave, esto devuelve un booleano
-                if(login.checkLogin(usuario, clave)){
-                    //crea una sesión
-                    HttpSession session = request.getSession(true);
-                    //crea las cookies para la sesión 
-                    session.setAttribute("usuario", usuario);
-                    session.setAttribute("isLogged", true); 
-                    //redirecciona al dashboard
-                    response.sendRedirect("/Tarzam/Dashboard");
-                }
-                else {
-                    //si es false devuelve al front un atributo resultado y renderiza el login.jsp
-                    request.setAttribute("resultados", "Usuario o contraseña incorrecta");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                }                     
-           } 
         }
     }
 
