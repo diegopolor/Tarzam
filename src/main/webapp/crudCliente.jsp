@@ -28,7 +28,11 @@
                        <li>
                      
                        </li>
+                       <form method="POST" action="Logout">
+                           <input name="logut" type ="submit" value ="Salir" >                     
+                       </form>
                    </ul>
+                   
                </nav>
             </header>
             <div class="content">
