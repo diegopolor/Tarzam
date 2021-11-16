@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.tarzam.s.a.s;
 
-import Modelo.Objects.ClienteDAO;
-import Modelo.Objects.PeliculaDAO;
 import com.mycompany.tarzam.s.a.s.utils.Utils;
+import Modelo.Objects.PeliculaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author USER
+ * @author Camilo Ternera
  */
-public class Pelicula extends HttpServlet {
+public class PeliculaController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +29,24 @@ public class Pelicula extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            PeliculaDAO pelicula = new PeliculaDAO();
             if(request.getMethod().equals("GET")){
-                PeliculaDAO peliculaDao = new PeliculaDAO();
-                List<Modelo.Objects.Pelicula> peliculas; 
-                peliculas = peliculaDao.selectPelicula();
-                System.out.println("servlet datos: " + peliculas);
+                List<Modelo.Objects.Pelicula> peliculas = pelicula.selectPelicula();
+
                 request.setAttribute("peliculas", peliculas);
                 Utils.loggedRedirect(request, response, "crudPelicula.jsp","/Tarzam/Login"); 
+            } else {
+                if (request.getMethod().equals("POST")) {
+
+                    // int insertPeliculas = pelicula.intertPelicula();
+                }
             }
         }
     }
+
+    // private void savePelicula(int codigo_pelicula) {
+
+    // }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

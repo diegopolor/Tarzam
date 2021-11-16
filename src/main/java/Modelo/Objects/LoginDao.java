@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.Objects;
-
 
 import Modelo.conexion.Conexion;
 import java.sql.Connection;
@@ -14,7 +8,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author polod
+ * @author Diego Polo
  */
 public class LoginDao {
     
@@ -50,11 +44,10 @@ public class LoginDao {
             }
                             
             return rows >0;
-                     
         }
     
-    public static void main(String[] args) {
-        LoginDao login = new LoginDao();
-        System.out.println(login.checkLogin("admin", "1234"));   
-    }
+    // public static void main(String[] args) {
+    //     LoginDao login = new LoginDao();
+    //     System.out.println(login.checkLogin("admin", "1234"));   
+    // }
 }

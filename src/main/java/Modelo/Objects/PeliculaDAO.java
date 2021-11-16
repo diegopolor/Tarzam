@@ -160,8 +160,8 @@ public class PeliculaDAO {
         return registro;
     }
 
-    // public static void main(String[] args) {
-    //     PeliculaDAO peliculas = new PeliculaDAO();
-    //     System.out.println(peliculas.selectPelicula().size());
-    // }
+    public static void main(String[] args) {
+        PeliculaDAO peliculas = new PeliculaDAO();
+        System.out.println(peliculas.selectPelicula().size());
+    }
 }
