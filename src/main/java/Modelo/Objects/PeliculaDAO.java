@@ -13,6 +13,7 @@ public class PeliculaDAO {
 
     private static final String SQL_SELECT = "SELECT * FROM pelicula";
     private static final String SQL_INSERT = "INSERT INTO pelicula(titulo_pelicula, tipo_pelicula, categoria_pelicula, actorprincipal_pelicula, precioactual_pelicula, stock_pelicula, saldo_pelicula) VALUES(?, ?, ?, ?, ?, ?, ?);";
+    private static final String SQL_UPDATE = "UPDATE pelicula SET titulo_pelicula = ?, tipo_pelicula = ?, categoria_pelicula = ?, actorprincipal_pelicula = ?, precioactual_pelicula = ?, stock_pelicula = ?, saldo_pelicula = ? WHERE codigo_pelicula = ?";
 
     public List<Pelicula> selectPelicula() {
         /* -------------------------------------------------------------------------- */
@@ -96,6 +97,41 @@ public class PeliculaDAO {
         }
         return registro;
     }
+
+    public int updatePelicula(Pelicula p){
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int registro = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_UPDATE);
+
+            ps.setString(1, p.getTitulo());      
+            ps.setString(2, p.getTipo()); 
+            ps.setString(3, p.getCategoria());  
+            ps.setString(4, p.getActorPrincipal());              
+            ps.setInt(5, p.getPrecio());    
+            ps.setInt(6, p.getStock());         
+            ps.setInt(7, p.getSaldo());
+
+            //Nos regresa el numero de registros afectados.
+            registro = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }finally {
+            try {
+                Conexion.close(ps);
+                Conexion.close(conn);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        return registro;
+    }
+
     
     // public static void main(String[] args) {
     //     PeliculaDAO peliculas = new PeliculaDAO();
