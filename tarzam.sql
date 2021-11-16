@@ -44,14 +44,16 @@ CREATE TABLE `boleta` (
 
 CREATE TABLE `cliente` (
   `id_cliente` int(11) COMMENT 'Clave primaria',
-  `nombre_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellidos_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `numdocumento_cliente` int(11) NOT NULL COMMENT 'Clave primaria',
-  `direccion_cliente` varchar(80) COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `celular_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `nombre_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (nombre_cliente <> ''),
+  `apellidos_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (apellidos_cliente <> '') ,
+  `numdocumento_cliente` int(11) NOT NULL COMMENT 'Clave primaria' CHECK (numdocumento_cliente <> '') ,
+  `direccion_cliente` varchar(80) NOT NULL COLLATE utf8_spanish2_ci  CHECK (direccion_cliente <> ''),
+  `telefono_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (telefono_cliente <> '') ,
+  `celular_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (celular_cliente <> '') 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+
+select * from cliente;
 
 -- ................... DATOS INTRODUCIDOS ------------------------------- --
 INSERT INTO cliente  VALUES (1, "Alvaro", "Rosales Medina",32234523, "Calle 54B #34 - 234", 325522, 3203345);
@@ -209,4 +211,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 

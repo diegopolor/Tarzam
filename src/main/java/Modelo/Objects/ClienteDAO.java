@@ -9,7 +9,8 @@ public class ClienteDAO {
     private static final String SQL_SELECT = "SELECT * FROM cliente ORDER BY apellidos_cliente;";
     private static final String SQL_INSERT = "INSERT INTO cliente (nombre_cliente, apellidos_cliente, numdocumento_cliente, direccion_cliente, telefono_cliente, celular_cliente) VALUES (?, ?, ?, ?, ?, ?);";
     private static final String SQL_UPDATE = "UPDATE cliente SET nombre_cliente = ?, apellidos_cliente = ?, numdocumento_cliente = ?, direccion_cliente = ?,telefono_cliente = ?, celular_cliente = ?  WHERE id_cliente = ?";
-
+     private static final String SQL_DELETE = "DELETE FROM cliente WHERE id_cliente = ?";
+    
     public List<Cliente> selectCliente() {
         /* -------------------------------------------------------------------------- */
         /*      Metodo para seleccionar todos lss clientes registrados en la tabla    */
@@ -129,6 +130,31 @@ public class ClienteDAO {
         return registro;
     }
      
-    
+        public int DeleteCurso(Cliente c){
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        int registro = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            pstm = conn.prepareStatement(SQL_DELETE);
+
+            pstm.setInt(1, c.getId_cliente());
+
+            //Nos regresa el numero de registros afectados.
+            registro = pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }finally {
+            try {
+                Conexion.close(pstm);
+                Conexion.close(conn);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        return registro;
+    }
 
 }

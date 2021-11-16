@@ -129,9 +129,17 @@
                       
                     </form>
                 </div>
+                   
                 <footer>
                     <a href="#"><img src="assets/logo1.png" alt="" class="navlogo"></a>
                 </footer>
+                   <% 
+                        //recibe el atributo resultado devuelto por el servlet
+                        String error = (String)request.getAttribute("formularioErr");
+                    %>
+                    <p><%= error %></p>
+                    
+
             </div>
         </main>
     </body>

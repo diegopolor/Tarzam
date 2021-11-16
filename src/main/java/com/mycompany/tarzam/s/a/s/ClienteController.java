@@ -32,37 +32,51 @@ public class ClienteController extends HttpServlet {
                 
                 //AGREGAR        
                     if(request.getParameter("submit").equals("Agregar")){
-                        String nombre = request.getParameter("nombre");
-                        String apellidos = request.getParameter("apellidos");
-                        int documento = Integer.parseInt(request.getParameter("documento")); 
-                        String direccion = request.getParameter("direccion");
-                        String telefono = request.getParameter("telefono");
-                        String celular = request.getParameter("celular");
+                       try {
+                           
+                            String nombre = request.getParameter("nombre");
+                            String apellidos = request.getParameter("apellidos");
+                            int documento = Integer.parseInt(request.getParameter("documento")); 
+                            String direccion = request.getParameter("direccion");
+                            String telefono = request.getParameter("telefono");
+                            String celular = request.getParameter("celular");
+                            
+                            Cliente cliente = new Cliente(nombre,  apellidos,  documento,  direccion,  telefono,  celular);
                 
-                        Cliente cliente = new Cliente(nombre,  apellidos,  documento,  direccion,  telefono,  celular);
+                            ClienteDAO clienteDao = new ClienteDAO();
+                            int insert = clienteDao.insertCliente(cliente);
                 
-                        ClienteDAO clienteDao = new ClienteDAO();
-                        int insert = clienteDao.insertCliente(cliente);
-                
-                        if(insert > 0)response.sendRedirect("/Tarzam/Clientes");
-                        else out.println("Ocurrió un error, no se pudieron guardar los datos");
+                            if(insert > 0)
+                                out.println("<script>alert('Los datos ingresados se han GUARDADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");                                 
+                            else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                                 
+                       }catch(NumberFormatException  e){
+                           out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                        
+                       }                                       
                     }
                     else if(request.getParameter("submit").equals("Actualizar")){
-                        int id = Integer.parseInt(request.getParameter("id")); 
-                        String nombre = request.getParameter("nombre");
-                        String apellidos = request.getParameter("apellidos");
-                        int documento = Integer.parseInt(request.getParameter("documento")); 
-                        String direccion = request.getParameter("direccion");
-                        String telefono = request.getParameter("telefono");
-                        String celular = request.getParameter("celular");
+                        try{
+                            int id = Integer.parseInt(request.getParameter("id")); 
+                            String nombre = request.getParameter("nombre");
+                            String apellidos = request.getParameter("apellidos");
+                            int documento = Integer.parseInt(request.getParameter("documento")); 
+                            String direccion = request.getParameter("direccion");
+                            String telefono = request.getParameter("telefono");
+                            String celular = request.getParameter("celular");
                 
-                        Cliente cliente = new Cliente(id, nombre,  apellidos,  documento,  direccion,  telefono,  celular);
+                            Cliente cliente = new Cliente(id, nombre,  apellidos,  documento,  direccion,  telefono,  celular);
                 
-                        ClienteDAO clienteDao = new ClienteDAO();
-                        int insert = clienteDao.updateCliente(cliente);
+                            ClienteDAO clienteDao = new ClienteDAO();
+                            int insert = clienteDao.updateCliente(cliente);
                 
-                        if(insert > 0)response.sendRedirect("/Tarzam/Clientes");
-                        else out.println("Ocurrió un error, no se pudieron guardar los datos");
+                            if(insert > 0){
+                                out.println("<script>alert('Los datos ingresados se han ACTUALIZADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");
+                            }
+                            else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                                        
+                        }catch(NumberFormatException e){
+                            out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                                        
+
+                        }
+
                     }
 
                 
