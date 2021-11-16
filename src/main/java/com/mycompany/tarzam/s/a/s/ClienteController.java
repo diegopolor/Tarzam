@@ -5,18 +5,19 @@
  */
 package com.mycompany.tarzam.s.a.s;
 
+import Modelo.Objects.Cliente;
 import Modelo.Objects.ClienteDAO;
 import com.mycompany.tarzam.s.a.s.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Cliente extends HttpServlet {
+public class ClienteController extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,7 +33,25 @@ public class Cliente extends HttpServlet {
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
             }
             else if(request.getMethod().equals("POST")){
-                out.println(request.getParameter("nombre"));
+                
+                String nombre = request.getParameter("nombre");
+                String apellidos = request.getParameter("apellidos");
+                int documento = Integer.parseInt(request.getParameter("documento")); 
+                String direccion = request.getParameter("direccion");
+                String telefono = request.getParameter("telefono");
+                String celular = request.getParameter("celular");
+                
+                Cliente cliente = new Cliente( nombre,  apellidos,  documento,  direccion,  telefono,  celular);
+                
+                ClienteDAO clienteDao = new ClienteDAO();
+                int insert = clienteDao.insertCliente(cliente);
+                System.out.println(insert);
+                
+                if(insert > 0) out.println("Datos guardados satisfactoriamente");
+                else out.println("Ocurrió un error, no se pudieron guardar los datos");
+                
+
+
             }
         }
     }
