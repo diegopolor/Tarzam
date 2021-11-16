@@ -54,14 +54,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <%        
+                            <%        
                                 List<Cliente>clientes  = (List<Cliente>)request.getAttribute("clientes");
                                 
                                 System.out.println("-------Datos----------");
                                 System.out.println(clientes.size());
                                 
                                 for(Cliente clie : clientes){                         
-                                %>
+                            %>
                             <tr>
                                 <td><%=clie.getDocumento() %></td>
                                 <td><%=clie.getNombre() %></td>
@@ -98,7 +98,6 @@
                             <input type="text" name=""  class="forminput">
                             <button type="submit" class="formbtn">Agregar</button>
                         </div>
-                      
                     </form>
                 </div>
                 <footer>

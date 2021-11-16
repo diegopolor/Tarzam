@@ -24,19 +24,19 @@
     </head>
     <body>
         <main class="container">
-           <header>
-               <nav class="navbar">
-                   <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
-                   <ul>
-                       <li>
-                           <a href ="/Tarzam/Peliculas" class="navbtn">Peliculas</a>
-                           <a href ="/Tarzam/Clientes" class="navbtn">Clientes</a>
-                       </li>
-                       <form method="POST" action="Logout">
-                           <input name="logut" type ="submit" value ="Salir" class="logutbtn navbtn">                     
-                       </form>
-                   </ul>
-               </nav>
+            <header>
+                <nav class="navbar">
+                    <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
+                    <ul>
+                        <li>
+                            <a href ="/Tarzam/Peliculas" class="navbtn">Peliculas</a>
+                            <a href ="/Tarzam/Clientes" class="navbtn">Clientes</a>
+                        </li>
+                        <form method="POST" action="Logout">
+                            <input name="logut" type ="submit" value ="Salir" class="logutbtn navbtn">                     
+                        </form>
+                    </ul>
+                </nav>
             </header>
             <div class="content">
                 <div class="TableContainer">
@@ -57,14 +57,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                               <%                      
-                                List<Pelicula>peliculas = (List<Pelicula>)request.getAttribute("peliculas");
+                            <%                      
+                                List<Pelicula> peliculas = (List<Pelicula>)request.getAttribute("peliculas");
                                 
-                                System.out.println("-------Dats----------");
-                                System.out.println(peliculas);
+                                System.out.println("-------Datos----------");
+                                System.out.println(peliculas.size());
                                 
                                 for(Pelicula peli : peliculas){                         
-                                %>
+                            %>
                             <tr>
                                 <td><%=peli.getId_pelicula() %></td>
                                 <td><%=peli.getTitulo() %></td>

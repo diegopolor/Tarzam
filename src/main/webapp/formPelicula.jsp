@@ -21,14 +21,14 @@
     </head>
     <body>
         <main class="container">
-           <header>
-               <nav class="navbar">
-                   <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
-                   <ul>
-                       <li>
-                       </li>
-                   </ul>
-               </nav>
+            <header>
+                <nav class="navbar">
+                    <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
+                    <ul>
+                        <li>
+                        </li>
+                    </ul>
+                </nav>
             </header>
             <div class="content">
                 <div class="TableContainer">
@@ -56,12 +56,11 @@
                                 <input type="text" name="" class="forminput">
                                 <button type="submit" class="formbtn">Agregar</button>
                             </div>
-                          
                         </form>
                     </div>
                 </div>
                 <footer>
-                   <a href="#"><img src="assets/logo1.png" alt="" class="navlogo"></a>
+                    <a href="#"><img src="assets/logo1.png" alt="" class="navlogo"></a>
                 </footer>
             </div>
         </main>

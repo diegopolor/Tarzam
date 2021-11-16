@@ -33,14 +33,16 @@ public class PeliculaController extends HttpServlet {
             if(request.getMethod().equals("GET")){
                 List<Modelo.Objects.Pelicula> peliculas = pelicula.selectPelicula();
 
+                System.out.println(peliculas);
                 request.setAttribute("peliculas", peliculas);
                 Utils.loggedRedirect(request, response, "crudPelicula.jsp","/Tarzam/Login"); 
-            } else {
-                if (request.getMethod().equals("POST")) {
+            } 
+            // else {
+            //     if (request.getMethod().equals("POST")) {
 
-                    // int insertPeliculas = pelicula.intertPelicula();
-                }
-            }
+            //         // int insertPeliculas = pelicula.intertPelicula();
+            //     }
+            // }
         }
     }
 
