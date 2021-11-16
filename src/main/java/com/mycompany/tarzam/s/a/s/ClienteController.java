@@ -30,10 +30,11 @@ public class ClienteController extends HttpServlet {
                 List<Modelo.Objects.Cliente> clientes = clientesDao.selectCliente(); 
                 //pasa los datos de la consulta al front end
                 request.setAttribute("clientes", clientes);
+                System.out.println("obtuvo get");
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
             }
             else if(request.getMethod().equals("POST")){
-                
+                System.out.println(request.getParameter("hola"));
                 String nombre = request.getParameter("nombre");
                 String apellidos = request.getParameter("apellidos");
                 int documento = Integer.parseInt(request.getParameter("documento")); 
@@ -47,7 +48,7 @@ public class ClienteController extends HttpServlet {
                 int insert = clienteDao.insertCliente(cliente);
                 System.out.println(insert);
                 
-                if(insert > 0) out.println("Datos guardados satisfactoriamente");
+                if(insert > 0)request.getRequestDispatcher("crudCliente.jsp").forward(request, response); 
                 else out.println("Ocurrió un error, no se pudieron guardar los datos");
                 
 

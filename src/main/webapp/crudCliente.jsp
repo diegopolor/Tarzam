@@ -71,7 +71,7 @@
                                 <td><%=clie.getTelefono() %></td>
                                 <td><%=clie.getCelular() %></td>
                                 <td class="tablebtn">
-                                    <button class="btn1">Edit</button>
+                                    <button accesskey = "<%=clie.getDocumento() %>" class="editarBtn btn1">Edit</button>
                                     <button class="btn2">Delete</button>
                                 </td>
                             </tr>
@@ -83,20 +83,20 @@
                     <div class="logoutcontainer">
                         <button class="exitbtn">X</button>
                     </div>
-                    <form action="" method = "POST" class="form">
+                    <form action="Clientes" method = "POST" class="form">
                         <div class="form-subcontainer">
                             <label for="" class="formtxt formlabel">Documento</label>
-                            <input type="text" name=""  class="forminput">
+                            <input type="number" name="documento"  class="forminput">
                             <label for="" class="formtxt formlabel">Nombre</label>
-                            <input type="text" name="" class="forminput">
+                            <input type="text" name="nombre" class="forminput">
                             <label for="" class="formtxt formlabel">Apellidos</label>
-                            <input type="text" name="" class="forminput">
+                            <input type="text" name="apellidos" class="forminput">
                             <label for="" class="formtxt formlabel">Dirección</label>
-                            <input type="text" name=""  class="forminput">
+                            <input type="text" name="direccion"  class="forminput">
                             <label for="" class="formtxt formlabel">Celular</label>
-                            <input type="text" name=""  class="forminput">
+                            <input type="number" name="celular"  class="forminput">
                             <label for="" class="formtxt formlabel">Telefono</label>
-                            <input type="text" name=""  class="forminput">
+                            <input type="number" name="telefono"  class="forminput">
                             <button type="submit" class="formbtn">Agregar</button>
                         </div>
                       

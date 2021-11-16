@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ClienteDAO {
     
-    private static final String SQL_SELECT = "SELECT * FROM cliente;";
+    private static final String SQL_SELECT = "SELECT * FROM cliente ORDER BY apellidos_cliente;";
     private static final String SQL_INSERT = "INSERT INTO cliente (nombre_cliente, apellidos_cliente, numdocumento_cliente, direccion_cliente, telefono_cliente, celular_cliente) VALUES (?, ?, ?, ?, ?, ?);";
 
     public List<Cliente> selectCliente() {
