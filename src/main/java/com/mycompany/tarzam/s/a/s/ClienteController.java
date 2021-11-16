@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.tarzam.s.a.s;
 
 import Modelo.Objects.Cliente;
@@ -34,7 +29,12 @@ public class ClienteController extends HttpServlet {
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
             }
             else if(request.getMethod().equals("POST")){
+<<<<<<< HEAD
                 System.out.println(request.getParameter("hola"));
+=======
+
+                // savePelicula(codigo_pelicula);
+>>>>>>> f7b4102480670c802be4427dcd14e9d2a1daf027
                 String nombre = request.getParameter("nombre");
                 String apellidos = request.getParameter("apellidos");
                 int documento = Integer.parseInt(request.getParameter("documento")); 
@@ -50,9 +50,6 @@ public class ClienteController extends HttpServlet {
                 
                 if(insert > 0)request.getRequestDispatcher("crudCliente.jsp").forward(request, response); 
                 else out.println("Ocurrió un error, no se pudieron guardar los datos");
-                
-
-
             }
         }
     }
