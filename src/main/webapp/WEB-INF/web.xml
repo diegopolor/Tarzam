@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>Cliente</servlet-name>
-        <servlet-class>com.mycompany.tarzam.s.a.s.Cliente</servlet-class>
+        <servlet-class>com.mycompany.tarzam.s.a.s.ClienteController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>

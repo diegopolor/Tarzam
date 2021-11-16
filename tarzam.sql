@@ -20,8 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tarzam`
 --
-
--- --------------------------------------------------------
+ CREATE DATABASE tarzam;
+ USE tarzam;
+-- -------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `boleta`
@@ -29,10 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `boleta` (
   `codigo_boleta` int(5) NOT NULL COMMENT 'Clave Primaria',
-  `codigo_cliente` int(12) NOT NULL COMMENT 'Clave foranea',
+  `numdocumento_cliente` int(12) NOT NULL COMMENT 'Clave foranea',
   `nroboleta_boleta` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
   `datealquiler_boleta` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
 
 -- --------------------------------------------------------
 
@@ -41,16 +43,20 @@ CREATE TABLE `boleta` (
 --
 
 CREATE TABLE `cliente` (
-  `codigo_cliente` int(12) NOT NULL COMMENT 'Clave primaria',
+  `numdocumento_cliente` int(11) NOT NULL COMMENT 'Clave primaria',
   `nombre_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `primerapellido_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `segundoapellido_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombrecompleto` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
-  `numdocumento_cliente` int(11) NOT NULL,
+  `apellidos_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `direccion_cliente` varchar(80) COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono_cliente` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
-  `celular_cliente` varchar(13) COLLATE utf8_spanish2_ci NOT NULL
+  `telefono_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `celular_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+
+-- ................... DATOS INTRODUCIDOS ------------------------------- --
+INSERT INTO cliente  VALUES (32234523, "Alvaro", "Rosales Medina", "Calle 54B #34 - 234", 325522, 3203345);
+INSERT INTO cliente VALUES (32344423, "Leticia", "Sotomayor Alvarez", "Carrera 23F #33 - 564", 324322, 323345);
+
+SELECT * FROM cliente;
 
 -- --------------------------------------------------------
 
@@ -74,7 +80,7 @@ CREATE TABLE `detalle_boleta` (
 --
 
 CREATE TABLE `pelicula` (
-  `codigo_pelicula` int(5) NOT NULL COMMENT 'Clave primaria',
+  `codigo_pelicula` int(5) NOT NULL  COMMENT 'Clave primaria',
   `titulo_pelicula` varchar(80) COLLATE utf8_spanish2_ci NOT NULL,
   `tipo_pelicula` varchar(15) COLLATE utf8_spanish2_ci NOT NULL COMMENT 'Selección: Comedia, Accion, Terror, etc.',
   `categoria_pelicula` varchar(10) COLLATE utf8_spanish2_ci NOT NULL COMMENT 'Selección: Estreno, normal, clasico',
@@ -84,6 +90,12 @@ CREATE TABLE `pelicula` (
   `saldo_pelicula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+-- -----------------------DATOS INSERTADOS EN PELICULA----------------------------------- --
+INSERT INTO pelicula VALUES (1, "Venom", "Acción", "Superheroe", "Tom Hardy", 0, 0, 0);
+INSERT INTO pelicula VALUES (2, "Avengers", "Acción", "Superheroe", "No Disponible", 0, 0, 0);
+
+
+--       
 -- --------------------------------------------------------
 
 --
@@ -102,6 +114,15 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
 (1, 'admin', '123');
+INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
+(2, 'diego', '1234');
+INSERT INTO `usuario` (`username`, `password`) VALUES
+('anderson', '1234');
+
+
+
+
+select * from usuario;
 
 --
 -- Índices para tablas volcadas
@@ -112,13 +133,13 @@ INSERT INTO `usuario` (`id_usuario`, `username`, `password`) VALUES
 --
 ALTER TABLE `boleta`
   ADD PRIMARY KEY (`codigo_boleta`),
-  ADD KEY `FOREING` (`codigo_cliente`);
+  ADD KEY `FOREING` (`numdocumento_cliente`);
 
 --
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`codigo_cliente`);
+  ADD PRIMARY KEY (`numdocumento_cliente`);
 
 --
 -- Indices de la tabla `detalle_boleta`
@@ -153,7 +174,7 @@ ALTER TABLE `boleta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `codigo_cliente` int(12) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria';
+  MODIFY `numdocumento_cliente` int(12) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria';
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_boleta`
@@ -181,9 +202,10 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `boleta`
 --
 ALTER TABLE `boleta`
-  ADD CONSTRAINT `boleta_ibfk_1` FOREIGN KEY (`codigo_cliente`) REFERENCES `cliente` (`codigo_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `boleta_ibfk_1` FOREIGN KEY (`numdocumento_cliente`) REFERENCES `cliente` (`numdocumento_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

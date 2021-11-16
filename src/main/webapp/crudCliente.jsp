@@ -44,10 +44,9 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th>Documento</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
-                                <th>Documento</th>
                                 <th>Dirección</th>
                                 <th>Celular</th>
                                 <th>Telefono</th>
@@ -65,10 +64,9 @@
                                 for(Cliente clie : clientes){                         
                                 %>
                             <tr>
-                                <td><%=clie.getId_cliente() %></td>
+                                <td><%=clie.getDocumento() %></td>
                                 <td><%=clie.getNombre() %></td>
                                 <td><%=clie.getApellidos() %></td>
-                                <td><%=clie.getDocumento() %></td>
                                 <td><%=clie.getDireccion()%></td>
                                 <td><%=clie.getTelefono() %></td>
                                 <td><%=clie.getCelular() %></td>
