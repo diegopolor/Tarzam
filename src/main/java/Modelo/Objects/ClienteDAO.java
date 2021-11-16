@@ -6,9 +6,11 @@ import java.util.*;
 
 public class ClienteDAO {
     
-    private static final String SQL_SELECT = "SELECT * FROM cliente;";
+    private static final String SQL_SELECT = "SELECT * FROM cliente ORDER BY apellidos_cliente;";
     private static final String SQL_INSERT = "INSERT INTO cliente (nombre_cliente, apellidos_cliente, numdocumento_cliente, direccion_cliente, telefono_cliente, celular_cliente) VALUES (?, ?, ?, ?, ?, ?);";
-
+    private static final String SQL_UPDATE = "UPDATE cliente SET nombre_cliente = ?, apellidos_cliente = ?, numdocumento_cliente = ?, direccion_cliente = ?,telefono_cliente = ?, celular_cliente = ?  WHERE id_cliente = ?";
+     private static final String SQL_DELETE = "DELETE FROM cliente WHERE id_cliente = ?";
+    
     public List<Cliente> selectCliente() {
         /* -------------------------------------------------------------------------- */
         /*      Metodo para seleccionar todos lss clientes registrados en la tabla    */
@@ -28,7 +30,7 @@ public class ClienteDAO {
             rs = ps.executeQuery();
             
             while (rs.next()) {
- 
+                int idCliente = rs.getInt("id_cliente");
                 String nombreCliente = rs.getString("nombre_cliente");
                 String apellidoCliente = rs.getString("apellidos_cliente");
                 int numeroDocumentoCliente = rs.getInt("numdocumento_cliente");
@@ -36,7 +38,7 @@ public class ClienteDAO {
                 String telefonoCliente = rs.getString("telefono_cliente");
                 String celularCliente = rs.getString("celular_cliente");
                 
-                cliente = new Cliente(nombreCliente, apellidoCliente, numeroDocumentoCliente, direccionCliente, telefonoCliente, celularCliente);
+                cliente = new Cliente(idCliente, nombreCliente, apellidoCliente, numeroDocumentoCliente, direccionCliente, telefonoCliente, celularCliente);
 
                 clientes.add(cliente);
             }
@@ -90,6 +92,69 @@ public class ClienteDAO {
         }
         return registro;
         
+    }
+    
+    public int updateCliente(Cliente c){
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        int registro = 0;
+        /*Estudiante(int codigo, String nombre, String apellidos, int edad, String direccion, 
+        int identificacion, String genero, String correo, int telefono, String nombreAcu, 
+        int telfAcu, String profesor, String curso)
+        */
+        try {
+            conn = Conexion.getConnection();
+            pstm = conn.prepareStatement(SQL_UPDATE);
+            
+            pstm.setString(1, c.getNombre());   
+            pstm.setString(2, c.getApellidos()); 
+            pstm.setInt(3, c.getDocumento());   
+            pstm.setString(4, c.getDireccion());
+            pstm.setString(5, c.getTelefono());
+            pstm.setString(6, c.getCelular());
+            pstm.setInt(7, c.getId_cliente());
+ 
+            //Nos regresa el numero de registros afectados.
+            registro = pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }finally {
+            try {
+                Conexion.close(pstm);
+                Conexion.close(conn);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        return registro;
+    }
+     
+        public int DeleteCliente(Cliente c){
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        int registro = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            pstm = conn.prepareStatement(SQL_DELETE);
+
+            pstm.setInt(1, c.getId_cliente());
+
+            //Nos regresa el numero de registros afectados.
+            registro = pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }finally {
+            try {
+                Conexion.close(pstm);
+                Conexion.close(conn);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        return registro;
     }
 
 }

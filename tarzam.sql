@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `boleta` (
   `codigo_boleta` int(5) NOT NULL COMMENT 'Clave Primaria',
-  `numdocumento_cliente` int(12) NOT NULL COMMENT 'Clave foranea',
+  `id_cliente` int(12) NOT NULL COMMENT 'Clave foranea',
   `nroboleta_boleta` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
   `datealquiler_boleta` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
@@ -43,18 +43,21 @@ CREATE TABLE `boleta` (
 --
 
 CREATE TABLE `cliente` (
-  `numdocumento_cliente` int(11) NOT NULL COMMENT 'Clave primaria',
-  `nombre_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellidos_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `direccion_cliente` varchar(80) COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `celular_cliente` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `id_cliente` int(11) COMMENT 'Clave primaria',
+  `nombre_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (nombre_cliente <> ''),
+  `apellidos_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (apellidos_cliente <> '') ,
+  `numdocumento_cliente` int(11) NOT NULL COMMENT 'Clave primaria' CHECK (numdocumento_cliente <> '') ,
+  `direccion_cliente` varchar(80) NOT NULL COLLATE utf8_spanish2_ci  CHECK (direccion_cliente <> ''),
+  `telefono_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (telefono_cliente <> '') ,
+  `celular_cliente` varchar(50) NOT NULL COLLATE utf8_spanish2_ci CHECK (celular_cliente <> '') 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 
+select * from cliente;
+
 -- ................... DATOS INTRODUCIDOS ------------------------------- --
-INSERT INTO cliente  VALUES (32234523, "Alvaro", "Rosales Medina", "Calle 54B #34 - 234", 325522, 3203345);
-INSERT INTO cliente VALUES (32344423, "Leticia", "Sotomayor Alvarez", "Carrera 23F #33 - 564", 324322, 323345);
+INSERT INTO cliente  VALUES (1, "Alvaro", "Rosales Medina",32234523, "Calle 54B #34 - 234", 325522, 3203345);
+INSERT INTO cliente VALUES (2, "Leticia", "Sotomayor Alvarez",32234523, "Carrera 23F #33 - 564", 324322, 323345);
 
 SELECT * FROM cliente;
 
@@ -133,13 +136,13 @@ select * from usuario;
 --
 ALTER TABLE `boleta`
   ADD PRIMARY KEY (`codigo_boleta`),
-  ADD KEY `FOREING` (`numdocumento_cliente`);
+  ADD KEY `FOREING` (`id_cliente`);
 
 --
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`numdocumento_cliente`);
+  ADD PRIMARY KEY (`id_cliente`);
 
 --
 -- Indices de la tabla `detalle_boleta`
@@ -174,7 +177,7 @@ ALTER TABLE `boleta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `numdocumento_cliente` int(12) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria';
+  MODIFY `id_cliente` int(12) AUTO_INCREMENT COMMENT 'Clave primaria';
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_boleta`
@@ -202,10 +205,11 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `boleta`
 --
 ALTER TABLE `boleta`
-  ADD CONSTRAINT `boleta_ibfk_1` FOREIGN KEY (`numdocumento_cliente`) REFERENCES `cliente` (`numdocumento_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `boleta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
