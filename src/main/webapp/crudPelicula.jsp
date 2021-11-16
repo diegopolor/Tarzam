@@ -7,13 +7,14 @@
 <%@page import="Modelo.Objects.Pelicula"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Tarzam - Peliculas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="CSS/crud.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/formcrud.css" rel="stylesheet" type="text/css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="stylesheet" href="CSS/fontAwesome/all.css">
         <link rel="stylesheet" href="CSS/fontAwesome/all.min.css">
@@ -28,11 +29,11 @@
                    <a href="/Tarzam/Dashboard"><img src="assets/logo2.png" alt="" class="navlogo"></a>
                    <ul>
                        <li>
-                           <a href ="/Tarzam/Peliculas">Peliculas</a>
-                           <a href ="/Tarzam/Clientes">Clientes</a>
+                           <a href ="/Tarzam/Peliculas" class="navbtn">Peliculas</a>
+                           <a href ="/Tarzam/Clientes" class="navbtn">Clientes</a>
                        </li>
                        <form method="POST" action="Logout">
-                           <input name="logut" type ="submit" value ="Salir" >                     
+                           <input name="logut" type ="submit" value ="Salir" class="logutbtn navbtn">                     
                        </form>
                    </ul>
                </nav>
@@ -40,7 +41,7 @@
             <div class="content">
                 <div class="TableContainer">
                     <h1>Listado de Peliculas</h1>
-                    <a href="formPelicula.jsp">+Agregar</a>
+                    <button class="addbtn">Agregar</button>
                     <table class="table">
                         <thead>
                             <tr>
@@ -82,10 +83,38 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="form-container">
+                    <div class="logoutcontainer">
+                        <button class="exitbtn">X</button>
+                    </div>
+                    <form action="" method = "POST" class="form">
+                        <div class="formimg">
+                        </div>
+                        <div class="form-subcontainer">
+                            <label for="" class="formtxt formlabel">Título</label>
+                            <input type="text" name="" class="forminput">
+                            <label for="" class="formtxt formlabel">Tipo</label>
+                            <input type="text" name="" class="forminput">
+                            <label for="" class="formtxt formlabel">Categoria</label>
+                            <input type="text" name=""  class="forminput">
+                            <label for="" class="formtxt formlabel">Cast</label>
+                            <input type="text" name=""  class="forminput">
+                            <label for="" class="formtxt formlabel">Precio</label>
+                            <input type="text" name=""  class="forminput">
+                            <label for="" class="formtxt formlabel">Stock</label>
+                            <input type="text" name=""  class="forminput">
+                            <label for="" class="formtxt formlabel">Saldo</label>
+                            <input type="text" name="" class="forminput">
+                            <button type="submit" class="formbtn">Agregar</button>
+                        </div>
+                      
+                    </form>
+                </div>
                 <footer>
                    <a href="#"><img src="assets/logo1.png" alt="" class="navlogo"></a>
                 </footer>
             </div>
         </main>
     </body>
+    <script src="JS/crud.js"></script>
 </html>
