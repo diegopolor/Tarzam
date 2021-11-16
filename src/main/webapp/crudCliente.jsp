@@ -72,8 +72,8 @@
                                 <td><%=clie.getTelefono() %></td>
                                 <td><%=clie.getCelular() %></td>
                                 <td class="tablebtn">
-                                    <button accesskey = "<%=clie.getDocumento() %>" class="editarBtn btn1">Edit</button>
-                                    <button class="btn2">Delete</button>
+                                    <button  class="editarBtn btn1">Edit</button>
+                                    <button accesskey = "<%=clie.getId_cliente() %>"class="btn2 btnEliminar">Delete</button>
                                 </td>
                             </tr>
                             <% } %>
@@ -129,7 +129,19 @@
                       
                     </form>
                 </div>
-                   
+                <div class="form-containerEliminar">
+                    <div class="logoutcontainer">
+                        <button class="exitbtn">X</button>
+                    </div>
+                    <form action="Clientes" method = "POST" class="form">
+                        <div class="form-subcontainer">  
+                            <h3>¿Desea eliminar al cliente?</h3>
+                            ID: 
+                            <input type = "number" name = "id"  id= "id_cliente"  readonly>
+                            <input type="submit" name ="submit" class="formbtn" value="Eliminar">
+                        </div>                 
+                    </form>
+                </div>
                 <footer>
                     <a href="#"><img src="assets/logo1.png" alt="" class="navlogo"></a>
                 </footer>

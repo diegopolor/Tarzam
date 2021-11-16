@@ -74,11 +74,18 @@ public class ClienteController extends HttpServlet {
                             else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                                        
                         }catch(NumberFormatException e){
                             out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                                        
-
                         }
-
                     }
-
+                    else if(request.getParameter("submit").equals("Eliminar")){
+                        int id = Integer.parseInt(request.getParameter("id")); 
+                        Cliente cliente = new Cliente(id);
+                        ClienteDAO clienteDao = new ClienteDAO();
+                        int delete =clienteDao.DeleteCliente(cliente);
+                        
+                        if(delete > 0)
+                             out.println("<script>alert('Los datos se han ELIMINADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");
+                        else  out.println("<script>alert('Los datos no se han podido eliminar.'); window.location.href = '/Tarzam/Clientes'</script>");
+                    }
                 
                 
                 

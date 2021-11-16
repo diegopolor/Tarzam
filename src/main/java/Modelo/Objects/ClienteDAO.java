@@ -130,7 +130,7 @@ public class ClienteDAO {
         return registro;
     }
      
-        public int DeleteCurso(Cliente c){
+        public int DeleteCliente(Cliente c){
         Connection conn = null;
         PreparedStatement pstm = null;
         int registro = 0;

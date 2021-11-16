@@ -16,9 +16,9 @@ modaladd.addEventListener('click',function(){
 
 //*------------------ BOTON EDITAR ------------------ *//
 
-var modalUpdate = document.querySelectorAll('.editarBtn');
-var formcontainerUpdate = document.querySelector('.form-containerUpdate');
-var table = document.querySelector('.table');
+const modalUpdate = document.querySelectorAll('.editarBtn');
+const formcontainerUpdate = document.querySelector('.form-containerUpdate');
+const table = document.querySelector('.table');
 
 //datos del formulario
 const id = document.getElementById("id");
@@ -46,13 +46,30 @@ modalUpdate.forEach( btn => {
         
     });    
  });
-   
+ 
+ //*------------------ BOTON ELIMINAR ------------------ *//
+ 
+ const btnEliminar = document.querySelectorAll('.btnEliminar');
+ const formcontainerEliminar = document.querySelector('.form-containerEliminar');
+ var idCliente = document.getElementById("id_cliente");
+
+ btnEliminar.forEach(btn =>{
+     btn.addEventListener("click", function(e){
+         idCliente.value = e.target.accessKey;
+
+         formcontainerEliminar.classList.add('form-container_active');
+     });
+     
+ });
+ 
+ 
 
 //-------------------// CERRAR MODALES //-------------------//
 closemodal.forEach( close => {
     close.addEventListener('click',function(){
         formcontainer.classList.remove('form-container_active');
         formcontainerUpdate.classList.remove('form-container_active');
+        formcontainerEliminar.classList.remove('form-container_active');
     });
   });
 
