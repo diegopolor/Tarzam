@@ -14,6 +14,7 @@ public class PeliculaDAO {
     private static final String SQL_SELECT = "SELECT * FROM pelicula";
     private static final String SQL_INSERT = "INSERT INTO pelicula(titulo_pelicula, tipo_pelicula, categoria_pelicula, actorprincipal_pelicula, precioactual_pelicula, stock_pelicula, saldo_pelicula) VALUES(?, ?, ?, ?, ?, ?, ?);";
     private static final String SQL_UPDATE = "UPDATE pelicula SET titulo_pelicula = ?, tipo_pelicula = ?, categoria_pelicula = ?, actorprincipal_pelicula = ?, precioactual_pelicula = ?, stock_pelicula = ?, saldo_pelicula = ? WHERE codigo_pelicula = ?";
+    private static final String SQL_DELETE = "DELETE FROM pelicula WHERE codigo_pelicula = ?";
 
     public List<Pelicula> selectPelicula() {
         /* -------------------------------------------------------------------------- */
@@ -132,7 +133,33 @@ public class PeliculaDAO {
         return registro;
     }
 
-    
+    public int deletePelicula(Pelicula p){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int registro = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_DELETE);
+
+            ps.setInt(1, p.getId_pelicula());
+
+            //Nos regresa el numero de registros afectados.
+            registro = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }finally {
+            try {
+                Conexion.close(ps);
+                Conexion.close(conn);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        return registro;
+    }
+
     // public static void main(String[] args) {
     //     PeliculaDAO peliculas = new PeliculaDAO();
     //     System.out.println(peliculas.selectPelicula().size());
