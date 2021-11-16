@@ -22,6 +22,16 @@ public class Pelicula {
         this.saldo = saldo;
     }
 
+    public Pelicula(String titulo, String tipo, String categoria, String actorPrincipal, int precio, int stock, int saldo) {
+        this.titulo = titulo;
+        this.tipo = tipo;
+        this.categoria = categoria;
+        this.actorPrincipal = actorPrincipal;
+        this.precio = precio;
+        this.stock = stock;
+        this.saldo = saldo;
+    }
+
     public Pelicula(int id_pelicula) {
         this.id_pelicula = id_pelicula;
     } 
@@ -89,6 +99,4 @@ public class Pelicula {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-   
-   
 }
