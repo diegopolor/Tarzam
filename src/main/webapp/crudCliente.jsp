@@ -44,9 +44,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Documento</th>
+                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
+                                <th>Documento</th>
                                 <th>Dirección</th>
                                 <th>Celular</th>
                                 <th>Telefono</th>
@@ -63,9 +64,10 @@
                                 for(Cliente clie : clientes){                         
                                 %>
                             <tr>
-                                <td><%=clie.getDocumento() %></td>
+                                <td><%=clie.getId_cliente() %></td>
                                 <td><%=clie.getNombre() %></td>
                                 <td><%=clie.getApellidos() %></td>
+                                <td><%=clie.getDocumento() %></td>
                                 <td><%=clie.getDireccion()%></td>
                                 <td><%=clie.getTelefono() %></td>
                                 <td><%=clie.getCelular() %></td>
@@ -96,7 +98,33 @@
                             <input type="number" name="celular"  class="forminput">
                             <label for="" class="formtxt formlabel">Telefono</label>
                             <input type="number" name="telefono"  class="forminput">
-                            <button type="submit" class="formbtn">Agregar</button>
+                            <input type="submit" name ="submit" class="formbtn" value="Agregar">
+                        </div>
+                      
+                    </form>
+                </div>
+                 
+           <div class="form-containerUpdate">
+                    <div class="logoutcontainer">
+                        <button class="exitbtn">X</button>
+                    </div>
+                    <form action="Clientes" method = "POST" class="form">
+                        <div class="form-subcontainer">
+                            <label for="" class="formtxt formlabel">ID</label>
+                            <input type="number" name="id" id ="id"  class="forminput" readonly>
+                            <label for="" class="formtxt formlabel">Nombre</label>
+                            <input type="text" name="nombre" id ="nombre"  class="forminput">
+                            <label for="" class="formtxt formlabel">Apellidos</label>
+                            <input type="text" name="apellidos" id ="apellidos"  class="forminput">
+                            <label for="" class="formtxt formlabel">Documento</label>
+                            <input type="number" name="documento" id ="documento" class="forminput">
+                            <label for="" class="formtxt formlabel">Dirección</label>
+                            <input type="text" name="direccion" id ="direccion"   class="forminput">
+                            <label for="" class="formtxt formlabel">Celular</label>
+                            <input type="number" name="celular" id ="celular"  class="forminput">
+                            <label for="" class="formtxt formlabel">Telefono</label>
+                            <input type="number" name="telefono" id ="telefono"  class="forminput">
+                            <input type="submit" name = "submit" class="formbtn" value = "Actualizar">
                         </div>
                       
                     </form>

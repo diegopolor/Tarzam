@@ -29,27 +29,45 @@ public class ClienteController extends HttpServlet {
                 Utils.loggedRedirect(request, response, "crudCliente.jsp","/Tarzam/Login"); 
             }
             else if(request.getMethod().equals("POST")){
-<<<<<<< HEAD
-                System.out.println(request.getParameter("hola"));
-=======
+                
+                //AGREGAR        
+                    if(request.getParameter("submit").equals("Agregar")){
+                        String nombre = request.getParameter("nombre");
+                        String apellidos = request.getParameter("apellidos");
+                        int documento = Integer.parseInt(request.getParameter("documento")); 
+                        String direccion = request.getParameter("direccion");
+                        String telefono = request.getParameter("telefono");
+                        String celular = request.getParameter("celular");
+                
+                        Cliente cliente = new Cliente(nombre,  apellidos,  documento,  direccion,  telefono,  celular);
+                
+                        ClienteDAO clienteDao = new ClienteDAO();
+                        int insert = clienteDao.insertCliente(cliente);
+                
+                        if(insert > 0)response.sendRedirect("/Tarzam/Clientes");
+                        else out.println("Ocurrió un error, no se pudieron guardar los datos");
+                    }
+                    else if(request.getParameter("submit").equals("Actualizar")){
+                        int id = Integer.parseInt(request.getParameter("id")); 
+                        String nombre = request.getParameter("nombre");
+                        String apellidos = request.getParameter("apellidos");
+                        int documento = Integer.parseInt(request.getParameter("documento")); 
+                        String direccion = request.getParameter("direccion");
+                        String telefono = request.getParameter("telefono");
+                        String celular = request.getParameter("celular");
+                
+                        Cliente cliente = new Cliente(id, nombre,  apellidos,  documento,  direccion,  telefono,  celular);
+                
+                        ClienteDAO clienteDao = new ClienteDAO();
+                        int insert = clienteDao.updateCliente(cliente);
+                
+                        if(insert > 0)response.sendRedirect("/Tarzam/Clientes");
+                        else out.println("Ocurrió un error, no se pudieron guardar los datos");
+                    }
 
-                // savePelicula(codigo_pelicula);
->>>>>>> f7b4102480670c802be4427dcd14e9d2a1daf027
-                String nombre = request.getParameter("nombre");
-                String apellidos = request.getParameter("apellidos");
-                int documento = Integer.parseInt(request.getParameter("documento")); 
-                String direccion = request.getParameter("direccion");
-                String telefono = request.getParameter("telefono");
-                String celular = request.getParameter("celular");
                 
-                Cliente cliente = new Cliente( nombre,  apellidos,  documento,  direccion,  telefono,  celular);
                 
-                ClienteDAO clienteDao = new ClienteDAO();
-                int insert = clienteDao.insertCliente(cliente);
-                System.out.println(insert);
                 
-                if(insert > 0)request.getRequestDispatcher("crudCliente.jsp").forward(request, response); 
-                else out.println("Ocurrió un error, no se pudieron guardar los datos");
             }
         }
     }

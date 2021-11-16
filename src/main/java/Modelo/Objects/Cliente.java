@@ -13,7 +13,18 @@ public class Cliente {
    
 
     
-    //Insertar 
+    //LISTAR 
+    public Cliente(int id_cliente,String nombre, String apellidos, int documento, String direccion, String telefono, String celular) {
+        this.id_cliente = id_cliente;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.documento = documento;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.celular = celular;
+    }
+
+    //INSERTAR
     public Cliente(String nombre, String apellidos, int documento, String direccion, String telefono, String celular) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -24,7 +35,7 @@ public class Cliente {
     }
     
     
-    //Eliminar
+    //ELIMINAR
     public Cliente(int id_cliente) {
         this.id_cliente = id_cliente;
     }
