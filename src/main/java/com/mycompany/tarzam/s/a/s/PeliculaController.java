@@ -1,9 +1,9 @@
 package com.mycompany.tarzam.s.a.s;
 
-import com.mycompany.tarzam.s.a.s.utils.Utils;
+import Modelo.Objects.Pelicula;
 import Modelo.Objects.PeliculaDAO;
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.mycompany.tarzam.s.a.s.utils.Utils;
+import java.io.*;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,18 +37,32 @@ public class PeliculaController extends HttpServlet {
                 request.setAttribute("peliculas", peliculas);
                 Utils.loggedRedirect(request, response, "crudPelicula.jsp","/Tarzam/Login"); 
             } 
-            // else {
-            //     if (request.getMethod().equals("POST")) {
-
-            //         // int insertPeliculas = pelicula.intertPelicula();
-            //     }
-            // }
+            else {
+                if (request.getParameter("submit").equals("Agregar")) {
+                    String titulo = request.getParameter("titulo_pelicula");
+                    String tipo = request.getParameter("tipo_pelicula");
+                    String categoria = request.getParameter("categoria_pelicula");
+                    String actor = request.getParameter("actorprincipal_pelicula");
+                    int precio = Integer.parseInt(request.getParameter("precioactual_pelicula"));
+                    int stock = Integer.parseInt(request.getParameter("stock_pelicula"));
+                    int saldo = Integer.parseInt(request.getParameter("saldo_pelicla"));
+                    savePelicula(titulo, tipo, categoria, actor, precio, stock, saldo);
+                }
+            }
         }
     }
 
-    // private void savePelicula(int codigo_pelicula) {
+    private void savePelicula(String titulo, String tipo, String categoria, String actor, int precio, int stock, int saldo) {
+        Pelicula pelicula = new Pelicula(titulo, tipo, categoria, actor, precio, stock, saldo);
 
-    // }
+        PeliculaDAO newPelicula = new PeliculaDAO();
+
+        int insert = newPelicula.intertPelicula(pelicula);
+
+        if(insert > 0) 
+            out.println("<script>alert('Los datos ingresados se han GUARDADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");                                 
+         else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>"); 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
