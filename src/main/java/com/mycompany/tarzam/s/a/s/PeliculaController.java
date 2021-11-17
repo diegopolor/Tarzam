@@ -1,9 +1,10 @@
 package com.mycompany.tarzam.s.a.s;
 
-import Modelo.Objects.Pelicula;
-import Modelo.Objects.PeliculaDAO;
 import com.mycompany.tarzam.s.a.s.utils.Utils;
-import java.io.*;
+import Modelo.Objects.PeliculaDAO;
+import Modelo.Objects.Pelicula;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -60,8 +61,8 @@ public class PeliculaController extends HttpServlet {
         int insert = newPelicula.intertPelicula(pelicula);
 
         if(insert > 0) 
-            out.println("<script>alert('Los datos ingresados se han GUARDADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");                                 
-         else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>"); 
+            out.println("<script>alert('Los datos ingresados se han GUARDADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");
+            else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>"); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

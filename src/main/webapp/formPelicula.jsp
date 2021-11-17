@@ -41,19 +41,19 @@
                             </div>
                             <div class="form-subcontainer">
                                 <label for="" class="formtxt formlabel">Título</label>
-                                <input type="text" name="" class="forminput">
+                                <input type="text" name="titulo_pelicula" class="forminput">
                                 <label for="" class="formtxt formlabel">Tipo</label>
-                                <input type="text" name="" class="forminput">
+                                <input type="text" name="tipo_pelicula" class="forminput">
                                 <label for="" class="formtxt formlabel">Categoria</label>
-                                <input type="text" name=""  class="forminput">
-                                <label for="" class="formtxt formlabel">Cast</label>
-                                <input type="text" name=""  class="forminput">
+                                <input type="text" name="categoria_pelicula"  class="forminput">
+                                <label for="" class="formtxt formlabel">Actor</label>
+                                <input type="text" name="actorprincipal_pelicula"  class="forminput">
                                 <label for="" class="formtxt formlabel">Precio</label>
-                                <input type="text" name=""  class="forminput">
+                                <input type="text" name="precioactual_pelicula"  class="forminput">
                                 <label for="" class="formtxt formlabel">Stock</label>
-                                <input type="text" name=""  class="forminput">
+                                <input type="text" name="stock_pelicula"  class="forminput">
                                 <label for="" class="formtxt formlabel">Saldo</label>
-                                <input type="text" name="" class="forminput">
+                                <input type="text" name="saldo_pelicula"  class="forminput">
                                 <button type="submit" class="formbtn">Agregar</button>
                             </div>
                         </form>

@@ -32,8 +32,8 @@ public class ClienteController extends HttpServlet {
                 
                 //AGREGAR        
                     if(request.getParameter("submit").equals("Agregar")){
-                       try {
-                           
+                        try {
+
                             String nombre = request.getParameter("nombre");
                             String apellidos = request.getParameter("apellidos");
                             int documento = Integer.parseInt(request.getParameter("documento")); 
@@ -49,9 +49,9 @@ public class ClienteController extends HttpServlet {
                             if(insert > 0)
                                 out.println("<script>alert('Los datos ingresados se han GUARDADO satisfactoriamente'); window.location.href = '/Tarzam/Clientes'</script>");                                 
                             else out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                                 
-                       }catch(NumberFormatException  e){
-                           out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                        
-                       }                                       
+                        }catch(NumberFormatException  e){
+                            out.println("<script>alert('Error: Los datos ingresados son incorrectos, vuelvalo a intentar.'); window.location.href = '/Tarzam/Clientes'</script>");                           
+                        }                                       
                     }
                     else if(request.getParameter("submit").equals("Actualizar")){
                         try{
